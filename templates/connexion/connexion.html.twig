@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+<div class="login container-fluid content-h">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="res-full col-xxl-3 col-xl-6 col-sm-8 col-12 bg-light px-2 py-5 shadow">
+            <form class="w-75 mx-auto text-center d-flex flex-column justify-content-center" method="post">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                {% if app.user %}
+                    <div class="mb-3">
+                        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_deconnexion') }}">Logout</a>
+                    </div>
+                {% endif %}
+
+                <h1 class="h3 font-weight-normal mt-5" style="margin-bottom: 20%;">CONNEXION</h1>
+                <input type="email" placeholder="E-MAIL" value="{{ last_username }}" name="email" id="inputEmail" class="form-control p-3 mb-4 mx-auto" autocomplete="email" required autofocus>
+                <input type="password" placeholder="MOT DE PASSE" name="password" id="inputPassword" class="form-control p-3 mb-4 mx-auto" autocomplete="current-password" required>
+
+                <input type="hidden" name="_csrf_token"
+                    value="{{ csrf_token('authenticate') }}"
+                >
+
+                {#
+                    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                    See https://symfony.com/doc/current/security/remember_me.html
+                #}
+
+                    <div class="checkbox mb-3 align-items-center text-start">                
+                        <input class="form-check-input me-2" type="checkbox" value="" aria-label="Checkbox for following text input" name="_remember_me"><span>Rester connecté</span>                       
+                    </div>
+
+                <button class="btn btn-outline-danger btn-lg m-5 px-5 py-4 mx-auto" type="submit">
+                    JOUER
+                </button>
+                <a class="d-block fs14 text-secondary hover-csblack fw-bold" href="">CONNEXION IMPOSSIBLE</a>
+                <a class="fs14 text-secondary hover-csblack fw-bold" href="/inscription">CRÉER UN COMPTE</a></p>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
