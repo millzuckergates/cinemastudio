@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bureau{% endblock %}
+
+{% block body %}
+    {% if app.user.isverified == false %}
+        <div class="container-sm position-absolute top-50 start-50 translate-middle border py-5 bg-light">
+            <div class="row">
+                <div class="col-12 text-center">
+                        <img src="images/design/email_img.png" alt="" width="20%">
+                </div>
+                <div class="col text-center">
+                    <h1 class="fs-4 fw-bold py-3">VÉRIFIEZ VOTRE ADRESSE E-MAIL</h1>
+
+                    <p class="py-3 w-50 mx-auto">Pour jouer à Cinéma Studio, vous devez valider votre adresse e-mail en cliquant sur le lien qui vous a été 
+                        envoyé à l'adresse <span class="fw-bold">{{ app.user.email }}</span> </p>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+        <div class="container-fluid content-h content-w">
+            <div class="row">
+                <div class="col">
+                    {{ form(form) }}
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}
