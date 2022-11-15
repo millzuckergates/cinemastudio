@@ -1,0 +1,315 @@
+/********** STYLES GLOBAUX **********/
+    /* Importation de la typographie Raleway */
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;500;600;700&display=swap');
+    /* Mise en place de la typo */
+    *{
+        font-family: 'Raleway';
+    }
+    /* Hauteur de la navbar horizontale */
+    .navbar-height{
+        height: 70px;
+    }
+    /* Bordure de la navbar horizontale */
+    .nav-top{
+        border-bottom: 1px solid #C3C5C6;
+    }
+    /* Flèche page précédente */
+    .nav-top-previous{
+        position: absolute;
+        left: 250px;
+    }
+    /* Ligne vertical du menu horizontale */
+    .vl{
+        border-left: 1px solid grey!important;
+        height: 100%!important;
+    }
+    /* Largeur des pages (ONLINE) */
+    .content-w{
+        width: calc(100vw - 180px)!important;
+        margin: 0 0 0 auto!important;
+        
+    }
+    /* Hauteur des pages (OFFLINE) */
+    .content-h{
+        height: calc(100vh - 70px)!important;
+    }
+    /* Supprime le bouton de la barre latérale */
+    .nav-button{
+        display: none;
+    }
+    /* Taille du logo de la navbar */
+    #navbar-img{
+        width: 200px;
+    }
+    /* Reset des hovers sur les liens */
+    a:hover{
+        color: inherit;
+    }
+    /* Marge interne sur toutes les pages */
+    .layout-content{
+        padding: 0 200px!important;
+    }
+    /* Taille des images de notes (étoiles) */
+    .img-stars{
+        width: 20px;
+        height: 20px;
+    }
+    /* Largeur du menu lateral */
+    .offcanvas{
+        width: 180px!important;
+    }
+    /* Pas d'animation de scroll sur le menu */
+    #offcanvasScrolling{
+        transition: none;
+    }
+    /* Taille du boutton de scroll du menu */
+    .icon-size{
+        font-size: 20px;
+    }
+    /* Taille des icones de navbar */
+    .icon-size-navbar{
+        font-size: 15px;
+    }
+    /* Tailles de police */
+    .fs55{font-size: 55px;}.fs20{font-size: 20px;}.fs18{font-size: 18px;}.fs15{font-size: 15px;}.fs14{font-size: 14px;}.fs13{font-size: 13px;}.fs12{font-size: 12px;}.fs11{font-size: 11px;}.fs10{font-size: 10px;}
+
+/********** COLORS **********/
+    /* Couleur de background black */
+    .bg-csblack{
+        background-color: #202020!important;
+    }
+    /* Couleur de texte black */
+    .text-csblack{
+        color: #202020!important;
+    }
+    /* Couleur de texte rouge */
+    .text-csred{
+        color: #DC2026!important;
+    }
+    /* Décoration des liens */
+    a{
+        text-decoration: none!important;
+        color: #202020;
+    }
+
+/********** HOVER **********/
+    /* Boutons outline */
+    .btn-outline-dark:hover{
+        background-color: #DC2026!important;
+    }
+    /* Texte gris en hover */
+    .hover-csblack:hover{
+        color: #424649!important;
+    }
+    /* Texte rouge en hover  */
+    .hover-csred:hover{
+        color: #DC2026!important;
+    }
+    /* Texte rouge en hover (pour texte rouge)  */
+    .hover-csredlight:hover{
+        color: #DC7070!important;
+    }
+    /* Texte gris en hover (pour texte gris) */
+    .hover-csblack:hover{
+        color: rgb(82, 87, 0)!important;
+    }
+    
+/********** FOCUS **********/
+    /* Input */
+    input:focus{
+        box-sizing: border-box;
+        box-shadow: none!important;
+        border-color: black!important;
+    }
+    /* Icone burger */
+    .navbar-toggler:focus{
+        box-shadow: none!important;
+    }
+    /* Boutons */
+    .btn:focus{
+        box-shadow: none!important;
+    }
+
+/********** BACKGROUND **********/
+
+    .bg-grad{
+        background: rgb(236,236,236);
+        background: linear-gradient(180deg, rgba(236,236,236,1) 0%, rgba(255,255,255,1) 100%);    /* Background dégradé du header */
+    }
+    /* Image de background du header */
+    .header-col{
+        background-image: url('../../images/bg_header.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 600px;
+        width: 1680px;
+    }
+    /* Background des vignettes d'article (pelicule) */
+    .news-row article{
+        background-image: url('../../images/bg_actu.svg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    /* Background de la page inscription */
+    .inscription{
+        background-image: url('../../images/design/bg_inscription.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: calc(100vh - 121.5px);
+    }
+
+    /* Background de la page connexion */
+    .login{
+        background-image: url('../../../images/design/bg_connexion.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: calc(100vh - 121.5px);
+    }
+
+/* Container des vignettes */
+.news-row article div{
+    width:160px;
+    height:160px;
+    overflow: hidden;
+}
+
+
+.news-content{
+    padding: 0 30px;
+}
+
+/* Responsive */
+
+/* xs */
+@media only screen and (max-width: 300px){
+    /* Taille du titre */
+    .inscription-email h1 span, .inscription-date h1 span, .inscription-password h1 span{
+        font-size: 30px!important;
+    }
+    /* Taille du logo de la navbar */
+    #navbar-img{
+        display: none;
+    }
+}
+
+/* sm */
+@media only screen and (max-width: 576px){
+    .nav-top{
+        border: none;
+        height: 100vh;
+        align-items: start!important;
+    }
+    .nav-top-profil{
+        position: absolute!important;
+        bottom: 0;
+        right: 0;
+        margin-right: 7px;
+        margin-bottom: 15px;
+    }
+    .nav-top-budget i{
+        display: none;
+    }
+    .nav-top-budget{
+        position: absolute!important;
+        bottom: 0;
+        right: 50%;
+        transform: translate(50%);
+        font-size: 15px;
+        margin-bottom: 15px;
+    }
+    .nav-top-date span{
+        display: none;
+        position: absolute;
+        bottom: 40px;
+        left: 15px;
+        width: 130px;
+        text-align: center;
+        background-color: white;
+        border: 1px solid grey;
+        padding: 5px;
+        border-radius: 50px;
+    }
+    .nav-top-date{
+        position: absolute!important;
+        bottom: 0;
+        left: 0;
+        flex-direction: column;
+        margin-left: 7px;
+        margin-bottom: 12px;
+    }
+    .nav-top-vl{
+        display: none;
+    }
+
+    /* Hauteur de 100% du bloc connexion */
+    .res-full{
+        height: 100vh;
+    }
+    /* Menu lateral prend toute la largeur de l'écran */
+    .offcanvas{
+        width: 100vw!important;
+        height: 100vh!important;
+    }
+    /* Child de offcanvas */
+    .offcanvas-body{
+        height: 100vh!important;
+    }
+    /* Taille du logo de la navbar */
+    #navbar-img{
+        width: 150px;
+    }
+    /* Logo de la navbar verticale */
+    .navbar-logo{
+        width: 60%;  
+    }
+    .offcanvas-body .nav-item{
+        font-size: 20px;
+    }
+    /* Largeur des inputs */
+    #inscription_form_email, #inscription_form_plainPassword{
+        width: 100%!important;
+    }
+    /* Largeur et hauteur des boutons */
+    #emailBtn, #dateBtn, #passwordBtn{
+        width: 90%!important; 
+        height: 80px!important;
+    }
+}
+
+/* md */
+@media only screen and (max-width: 768px){
+    
+}
+
+/* lg */
+@media only screen and (max-width: 992px){
+    /* Hauteur du bloc de barre de recherche (responsive) */
+    .offcanvas-lg{
+        height: 70px!important;
+    }
+}
+
+/* xl */
+@media only screen and (max-width: 1200px){
+    /* Affiche le bouton de slide du menu latéral */
+    .nav-button{
+        display: block;
+    }
+
+    #offcanvasResponsive{
+        height: 150px;
+    }
+
+    .nav-top-previous{
+        left: 70px;
+    }
+}
+
+/* xxl */
+@media only screen and (max-width: 1400px){
+    /* Marge interne sur toutes les pages */
+    .layout-content{
+        padding: 0!important;
+    }
+}
+
