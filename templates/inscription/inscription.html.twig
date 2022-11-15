@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    <div class="inscription container-fluid content-h">
+        <!-- Bloc email -->
+        <div class="inscription-email row h-100 align-items-center">
+            <div class="col-xxl-6 col-xl-7 col-lg-12 text-center">
+                <h1 class="fs-4 text-center text-light">INSCRIVEZ-VOUS EN<span class="fs55 d-block fw-bold">TROIS ÉTAPES</span></h1>
+                <hr class="w-25 mx-auto opacity-100">
+                {{ form_start(inscriptionForm) }}
+                {{ form_widget(inscriptionForm.email) }}
+                <p class="w-50 mx-auto text-start pt-2 fw-bold" id="emailMsg" style="color: #FF3636;"></p>
+                <button class="btn py-3 px-5 bg-transparent text-light border btn-outline-dark border-light rounded-0 disabled opacity-25" id="emailBtn">SUIVANT</button>
+            </div>
+        </div>
+        <!-- Bloc date de naissance -->
+        <div class="inscription-date row h-100 align-items-center" style="display: none;">
+            <div class="col-xxl-6 col-xl-7 col-lg-12 text-center">
+                <h1 class="fs-4 text-center text-light">INDIQUEZ VOTRE<span class="fs55 d-block fw-bold">DATE DE NAISSANCE</span></h1>
+                <hr class="w-25 mx-auto mb-5 opacity-100">
+                <div class="row justify-content-center">
+                    <div class="col-xxl-2 col-xl-3 col-lg-2 col-md-2 col-sm-3 col-12">
+                        <span class="text-light">JOUR</span>
+                        {{ form_widget(inscriptionForm.date_de_naissance.day, {'attr': {'class': 'form-select w-2 mt-2 mb-5'}}) }}
+                    </div>
+                    <div class="col-xxl-2 col-xl-3 col-lg-2 col-md-2 col-sm-3 col-12">
+                        <span class="text-light">MOIS</span>
+                        {{ form_widget(inscriptionForm.date_de_naissance.month, {'attr': {'class': 'form-select w-2 mt-2 mb-5'}}) }}
+                    </div>
+                    <div class="col-xxl-2 col-xl-3 col-lg-2 col-md-2 col-sm-3 col-12">
+                        <span class="text-light">ANNÉE</span>
+                        {{ form_widget(inscriptionForm.date_de_naissance.year, {'attr': {'class': 'form-select w-2 mt-2 mb-5'}}) }}
+                    </div>
+                </div>
+                <button class="btn py-3 px-5 bg-transparent text-light border btn-outline-dark border-light rounded-0" id="dateBtn">SUIVANT</button>
+            </div>
+        </div>
+        <!-- Bloc mot de passe -->
+        <div class="inscription-password row h-100 align-items-center" style="display: none;">
+            <div class="col-xxl-6 col-xl-7 col-lg-12 text-center">
+                <h1 class="fs-4 text-center text-light">CHOISISSEZ UN<span class="fs55 d-block fw-bold">MOT DE PASSE</span></h1>
+                <hr class="w-25 mx-auto mb-5 opacity-100"> 
+                {{ form_widget(inscriptionForm.plainPassword, {label: 'Password'}) }}   
+                <p class="w-50 mx-auto text-start pt-2 fw-bold" id="passwordMsg" style="color: #FF3636;"></p>
+                <p class="text-light">{{ form_widget(inscriptionForm.agreeTerms, {'attr' : {'class': 'form-check-input me-2'}}) }} J'accepte les <a href="" class="text-csred hover-csred">Conditions d'utilisation</a> et j'ai lu la <a href="" class="text-csred hover-csred">Politique de confidentialité</a></p>
+                <button type="submit" class="btn py-3 px-5 bg-transparent text-light border btn-outline-dark border-light rounded-0 disabled opacity-25" id="passwordBtn">VALIDER</button>
+                {{ form_end(inscriptionForm) }} 
+            </div>
+        </div>
+
+
+    {% block javascripts %}
+    {% endblock %}
+
+{% endblock %}
