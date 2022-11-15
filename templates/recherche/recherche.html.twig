@@ -1,0 +1,151 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FilmController!{% endblock %}
+
+{% block body %}
+    {% if app.request.method == 'GET' %}
+        <div class="container-fluid bg-grad content-h content-w fs12 p-3">
+            <div class="row">
+                <div class="col">
+                    <span class="bg-dark text-light p-2 rounded-pill">Rechercher</span>
+                </div>
+            </div>
+            <div class="row mt-5 p-4">
+                <div class="col">
+                    <p class="fw-bold">RECHERCHE DE "{{ query|upper }}"</p>
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item bg-transparent rounded-0 border-0 border-bottom border-danger">Tout ()</li>
+                        <li class="list-group-item bg-transparent border-0">Personnes ()</li>
+                        <li class="list-group-item bg-transparent border-0">Films ({{ films|length }})</li>
+                        <li class="list-group-item bg-transparent border-0">Séries ()</li>
+                    </ul>
+                </div>
+                <div class="row mt-3">
+                    <div class="col">
+                        <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th scope="col"></th>
+                                <th scope="col">NOM</th>
+                                <th scope="col">TYPE</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            {% for film in films %}
+                              <tr>
+                                <th scope="row"></th>
+                                <td class="fw-bold">{{ film.titre }}</td>
+                                <td>{{ film.type }}</td>
+                              </tr>
+                            {% endfor %}
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+
+    {# <div class="container-fluid layout-content">
+        <div class="row pt-5">
+            <div class="col text-center">
+                <p class="m-0 fs12 fw-bold">RECHERCHE DE</p>
+                <p class="m-0 fs-1 fw-bold">"{{ query|upper }}"</p>
+                <p class="m-0 fs12 fw-bold">SUR CINÉMA STUDIO</p>
+                <hr class="mx-auto">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col p-0">
+                <div class="card">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="true" href="#">Tout</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/films">Films</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link">Séries</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link">Stars</a>
+                            </li>
+                        </ul>
+                    </div>
+                {% if films|length == 0 and acteurs|length == 0 %}
+                <!-- Message d'erreur -->
+                    {% for message in app.flashes('message') %}
+                        <div class="text-csred p-5">{{ message }}</div>
+                    {% endfor %}
+                {% else %}
+                <!-- Résultat de recherche -->
+                    <!-- Films -->
+                    <h4 class="m-0 px-3 pt-5 fw-bold">FILMS</h4>
+                    <p class="px-3">{{ films|length }} résultat{% if films|length > 1 %}s{% endif %} trouvé{% if films|length > 1 %}s{% endif %}.</p>
+                    {% for film in films %}
+                    <div class="row g-0 px-3">                   
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="{{ asset('/images/movies/' ~ film.imgurl) }}" class="img-fluid" alt="Affiche du film {{ film.titre }}">
+                                </div>
+                                <div class="col-md-8 d-flex flex-column">
+                                    <div class="card-body">
+                                    <h5 class="card-title fw-bold m-0">{{ film.titre }}</h5>
+                                    <p class="card-text m-0"><small class="text-muted">Réalisé par<a href="" class="text-csred hover-csredlight"> {{ film.realisateur.prenom }} {{ film.realisateur.nom }}</a></small></p>
+                                    <p class="card-text m-0"><small class="text-muted">Avec
+                                        {% for acteur in film.acteurs %}
+                                            <a href="" class="hover-csred">{{ acteur.prenom }} {{ acteur.nom }}</a>
+                                        {% endfor %}
+                                    </small></p>
+                                    <p class="card-text m-0"><small>{{ film.datedesortie|date('j F Y') }}</small></p>
+                                    <p class="card-text mt-2">{{ film.synopsis|u.truncate(44, '...') }}</p>
+                                </div>
+                                <div class="card-footer bg-transparent d-md-flex justify-content-around">
+                                    <div class="col-5 text-center fw-bold fs12">
+                                        <p class="m-0">NOTE PRESSE</p>
+                                        {{ noteToStars(film.notepresse)|raw }}                               
+                                    </div>
+                                    <div class="col-5 text-center fw-bold fs12">
+                                        <p class="m-0">NOTE JOUEURS</p>
+                                        {{ noteToStars(film.notejoueurs)|raw }}
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>  
+                    </div>                
+                    {% endfor %}
+                    <!-- Acteurs et actrices -->
+                    <h4 class="mx-0 mt-4 px-3 pt-2 fw-bold">STARS</h4>
+                    <p class="px-3">{{ acteurs|length }} résultat{% if acteurs|length > 1 %}s{% endif %} trouvé{% if acteurs|length > 1 %}s{% endif %}.</p>
+                    <div class="row d-flex">
+                    {% for acteur in acteurs %}
+                        <div class="col-2">
+                            <div class="card ms-3" style="width: 100%;">
+                                <img src="{{ asset('/images/actors/' ~ acteurs.imgurl)|imagine_filter('miniature') }}" class="img-fluid" alt="Photo de {{ acteur.imgurl }}">
+                                <div class="card-body">
+                                    <h5 class="card-title fw-bold m-0">{{ acteur.prenom }} {{ acteur.nom }}</h5>
+                                    <p>{{ showAge(acteur.datedemaissance) }} ans</p>
+                                    <p class="m-0 pb-1 fs13">Réputation</p>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped" role="progressbar" aria-label="Default striped example" style="width:{{ reputationToBar(acteur.reputation) }}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %} 
+                    </div>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+                
+                {# <div class="mt-3 p-3 bg-light border rounded">
+                    {{ actor.firstname }} {{ actor.lastname }}
+                </div> #} 
