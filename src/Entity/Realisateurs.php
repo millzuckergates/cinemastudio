@@ -66,7 +66,7 @@ class Realisateurs implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $img_url;
+    private $img_url = "real_default.jpg";
 
     /**
      * @ORM\Column(type="integer")

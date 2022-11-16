@@ -39,6 +39,25 @@ class FilmsRepository extends ServiceEntityRepository
         }
     }
 
+    // Recherche les films par leur nom
+    public function findFilmsByName(string $query)
+    {
+        $qb = $this->createQueryBuilder('f');
+        $qb
+            ->where(
+                $qb->expr()->andX(
+                    $qb->expr()->orX(
+                        $qb->expr()->like('f.titre', ':query'),
+                    ),
+                )
+            )
+            ->setParameter('query', '%' . $query . '%')
+        ;
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Films[] Returns an array of Films objects
 //     */

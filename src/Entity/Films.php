@@ -71,6 +71,11 @@ class Films
     private $realisateur;
 
     /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $type;
+
+    /**
      * @ORM\ManyToMany(targetEntity=Acteurs::class, inversedBy="films")
      */
     private $acteurs;
@@ -201,6 +206,18 @@ class Films
     public function setRealisateur(?Realisateurs $realisateur): self
     {
         $this->realisateur = $realisateur;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }

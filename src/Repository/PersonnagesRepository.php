@@ -39,6 +39,26 @@ class PersonnagesRepository extends ServiceEntityRepository
         }
     }
 
+    // Recherche les personnages par leur nom
+    public function findPersonnagesByName(string $query)
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qb
+            ->where(
+                $qb->expr()->andX(
+                    $qb->expr()->orX(
+                        $qb->expr()->like('p.nom', ':query'),
+                        $qb->expr()->like('p.prenom', ':query')
+                    ),
+                )
+            )
+            ->setParameter('query', '%' . $query . '%')
+        ;
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Personnages[] Returns an array of Personnages objects
 //     */

@@ -64,7 +64,7 @@ $(document).ready(function(){
 
     // Changement de couleurs des barres de réputation
     if($(".progress-bar").width() >= 100){
-        $(".progress-bar").css('background-color', '#00bf11');
+        $(".progress-bar").css('background-color', '#00bf11!important');
     }
 
     if($(".progress-bar").width() < 100 && $(".progress-bar").width() >= 75 ){
@@ -86,24 +86,36 @@ $(document).ready(function(){
     // Affiche le menu au chargement de la page 
     $('#offcanvasScrolling').addClass('show');
 
-    // N'affiche pas le menu au chargement de la page 
-    if (window.matchMedia("(max-width: 1200px)").matches) {
-        $('#offcanvasScrolling').removeClass('show');
-    }
-
-    if (window.matchMedia("(max-width: 1200px)").matches) {
-        $('.test').removeClass('w-50');
-        $('.test').addClass('w-100 p-3');
-        $('.res-navsearch').removeClass('w-50');
-    }
-
-    if (window.matchMedia("(max-width: 576px)").matches) {
-        $('#liDropup').addClass('dropup');
-    }
-
-
-    
+    // Affichage de la date pendant 2 sec (mode mobile)
     $('#navTopDate').click(function(){
         $('#dateClick').show().delay(2000).fadeOut();
     })
+
+    // Animations sous les onglets de la page Recherche
+    $('.table-display:first').show();
+    $('.onglets-recherche li:first').addClass('border-bottom border-danger rounded-0');
+
+    $('.onglets-recherche li').click(function(event){
+        index = $(this).index();
+        $('.onglets-recherche li').removeClass('border-bottom');
+        $(this).addClass('border-bottom border-danger rounded-0');
+        $('.table-display').hide();
+        $('.table-display').eq(index).show();
+    })
+
+    // RESPONSIVE
+        // N'affiche pas le menu au chargement de la page 
+        if (window.matchMedia("(max-width: 1200px)").matches) {
+            $('#offcanvasScrolling').removeClass('show');
+        }
+
+        if (window.matchMedia("(max-width: 1200px)").matches) {
+            $('.test').removeClass('w-50');
+            $('.test').addClass('w-100 p-3');
+            $('.res-navsearch').removeClass('w-50');
+        }
+
+        if (window.matchMedia("(max-width: 576px)").matches) {
+            $('#liDropup').addClass('dropup');
+        }
 })

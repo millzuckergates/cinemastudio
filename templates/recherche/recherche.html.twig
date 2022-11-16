@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello FilmController!{% endblock %}
+{% block title %}Recherche {{query}} sur Cinéma Studio{% endblock %}
 
 {% block body %}
     {% if app.request.method == 'GET' %}
@@ -12,34 +12,104 @@
             </div>
             <div class="row mt-5 p-4">
                 <div class="col">
-                    <p class="fw-bold">RECHERCHE DE "{{ query|upper }}"</p>
-                    <ul class="list-group list-group-horizontal">
-                        <li class="list-group-item bg-transparent rounded-0 border-0 border-bottom border-danger">Tout ()</li>
-                        <li class="list-group-item bg-transparent border-0">Personnes ()</li>
-                        <li class="list-group-item bg-transparent border-0">Films ({{ films|length }})</li>
-                        <li class="list-group-item bg-transparent border-0">Séries ()</li>
+                    <p class="fw-bold">RECHERCHE DE "{{query|upper}}"</p>
+                    <ul class="list-group list-group-horizontal onglets-recherche">
+                        <li class="list-group-item bg-transparent rounded-0 border-0" id="ongletTout" role='button' tabindex='0'>Tout ({{personnages|length + films|length}})</li>
+                        <li class="list-group-item bg-transparent border-0 rounded-0" role='button' tabindex='0' id="ongletPersonnes">Personnes ({{personnages|length}})</li>
+                        <li class="list-group-item bg-transparent border-0 rounded-0" role='button' tabindex='0' id="ongletFilms">Films ({{films|length}})</li>
+                        <li class="list-group-item bg-transparent border-0 rounded-0" role='button' tabindex='0' id="ongletSeries">Séries ()</li>
                     </ul>
                 </div>
                 <div class="row mt-3">
-                    <div class="col">
-                        <table class="table table-striped">
+                    <div class="col col-table">
+                        <!-- Onglet Tout -->
+                        <table class="table table-striped table-display">
                             <thead>
-                              <tr>
-                                <th scope="col"></th>
-                                <th scope="col">NOM</th>
-                                <th scope="col">TYPE</th>
-                              </tr>
+                                <tr class="fs10">
+                                    <!-- <th scope="col"></th> -->
+                                    <th scope="col">NOM</th>
+                                    <th scope="col">TYPE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for personnage in personnages %}
+                                <tr class="fs13">
+                                    <!-- <th scope="row"></th> -->
+                                    <td class="fw-bold">{{personnage.prenom}} {{personnage.nom}}</td>
+                                    <td>{{personnage.type}}</td>
+                                </tr>
+                            {% endfor %}
+                            {% for film in films %}
+                                <tr class="fs13">
+                                    <!-- <th scope="row"></th> -->
+                                    <td class="fw-bold">{{film.titre}}</td>
+                                    <td>{{film.type}}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <!-- Onglet Personnes-->
+                        <table class="table table-striped table-display">
+                            <thead>
+                                <tr class="fs10">
+                                    <!-- <th scope="col"></th> -->
+                                    <th scope="col">NOM</th>
+                                    <th scope="col">DATE DE NAISSANCE</th>
+                                    <th scope="col">STATUT</th>
+                                    <th scope="col">RECOMMANDATION</th>
+                                    <th scope="col">RÉPUTATION</th>
+                                    <th scope="col">TYPE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for personnage in personnages %}
+                                    <tr class="fs13">
+                                        <!-- <th scope="row"></th> -->
+                                        <td class="fw-bold">{{personnage.prenom}} {{personnage.nom}}</td>
+                                        <td>{{personnage.datedenaissance|date}}</td>
+                                        <td>{{personnage.statut}}</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-striped" role="progressbar" style="width:{{ personnage.recommandation }}"></div>
+                                            </div>
+                                        </td>
+                                        <td>{{personnage.reputation}}</td>
+                                        <td>{{personnage.type}}</td>
+                                    </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <!-- Onglet Films -->
+                        <table class="table table-striped table-display">
+                            <thead>
+                                <tr class="fs10">
+                                    <!-- <th scope="col"></th> -->
+                                    <th scope="col">TITRE</th>
+                                    <th scope="col">GENRE</th>
+                                    <th scope="col">DURÉE</th>
+                                    <th scope="col">DATE DE SORTIE</th>
+                                    <th scope="col">NOTE PRESSE</th>
+                                    <th scope="col">NOTE JOUEURS</th>
+                                </tr>
                             </thead>
                             <tbody>
                             {% for film in films %}
-                              <tr>
-                                <th scope="row"></th>
-                                <td class="fw-bold">{{ film.titre }}</td>
-                                <td>{{ film.type }}</td>
-                              </tr>
+                                <tr class="fs13">
+                                    <!-- <th scope="row"></th> -->
+                                    <td class="fw-bold">{{film.titre}}</td>
+                                    <td>{{film.genre}}</td>
+                                    <td>{{film.duree}}</td>
+                                    <td>{{film.datedesortie|date}}</td>
+                                    <td>{{noteToStars(film.notepresse)|raw}}</td>
+                                    <td>{{noteToStars(film.notejoueurs)|raw}}</td>
+                                </tr>
                             {% endfor %}
                             </tbody>
-                          </table>
+                        </table>
+                        <!-- Onglets Séries -->
+                        <table class="table table-striped table-display">
+                            
+                        </table>
                     </div>
                 </div>
             </div>

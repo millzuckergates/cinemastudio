@@ -3,6 +3,7 @@
 namespace App\Controller;
 use App\Repository\ActeursRepository;
 use App\Form\BarreDeRechercheFormType;
+use App\Repository\FilmsRepository;
 use App\Repository\PersonnagesRepository;
 use App\Repository\ProducteursRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,19 +38,20 @@ class RechercheController extends AbstractController
      * @param Request $request
      */
     public function handleSearch(
-        Request $request, PersonnagesRepository $persoRepo)
+        Request $request, PersonnagesRepository $persoRepo, FilmsRepository $filmsRepo)
     {
         
         $result ="";
         $query = $request->query->get('q');
         
         if($query!="") {
-            if(empty($persoRepo->findPersonnagesByName($query))){
+            if(empty($persoRepo->findPersonnagesByName($query)) && empty($filmsRepo->findFilmsByName($query))){
                 $result = $this->addFlash('message', 'Aucun résultat pour "'. $query . '"');
-                $resultFilms = "";
-                
+                $resultPerso = "";
+                $resultFilms = "";               
             }else{
-                $resultFilms = $persoRepo->findPersonnagesByName($query);
+                $resultPerso = $persoRepo->findPersonnagesByName($query);
+                $resultFilms = $filmsRepo->findFilmsByName($query);
                                
             }
         }else{
@@ -58,8 +60,8 @@ class RechercheController extends AbstractController
 
         return $this->render('recherche/recherche.html.twig', [
             'result' => $result,
-            'films' => $resultFilms,
-            
+            'personnages' => $resultPerso,
+            'films' => $resultFilms,           
             'query' => $query
         ]);
     }
