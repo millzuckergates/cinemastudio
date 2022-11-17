@@ -17,9 +17,9 @@ class BarreDeRechercheFormType extends AbstractType
             ->add('q', null, [
                 'label' => false,
                 'attr' => [
-                    'class' => 'search-form form-control border-secondary border-end-0',
+                    'class' => 'search-form form-control',
                     'placeholder' => 'Rechercher un film, une série...',
-                    'style' => 'border-radius: 20px; border-top-right-radius: 0; border-bottom-right-radius: 0; font-size: 13px;'
+                    'style' => 'border-radius: 20px; font-size: 13px;'
                 ]
             ])
             // Décommenter si le formulaire passe en POST pour ne pas avoir le submit en GET
@@ -38,7 +38,7 @@ class BarreDeRechercheFormType extends AbstractType
             'method' => 'get',
             'csrf_protection' => false,
             'attr' => [
-                'class' => 'res-navsearch d-flex w-50 mx-auto'
+                'class' => 'res-navsearch w-50 d-flex m-auto'
             ]
         ]);
     }

@@ -7,7 +7,7 @@
     }
     /* Hauteur de la navbar horizontale */
     .navbar-height{
-        height: 70px;
+        height: 60px;
     }
     /* Bordure de la navbar horizontale */
     .nav-top{
@@ -16,7 +16,7 @@
     /* Flèche page précédente */
     .nav-top-previous{
         position: absolute;
-        left: 250px;
+        left: 200px;
     }
     /* Ligne vertical du menu horizontale */
     .vl{
@@ -39,7 +39,7 @@
     }
     /* Taille du logo de la navbar */
     #navbar-img{
-        width: 200px;
+        width: 160px;
     }
     /* Reset des hovers sur les liens */
     a:hover{
@@ -70,11 +70,22 @@
     .icon-size-navbar{
         font-size: 15px;
     }
+    /* Désactivation des tables (onglets de la page recherche) */
     .table-display{
         display: none;
     }
+    /* Barres de recommandation et réputation */
+    .container-bar{
+        width: 150px;
+        height: 15px;
+        padding: 3px 0;
+    }
+    .bar{
+        height: 100%;
+        background-color: green;
+    }
     /* Tailles de police */
-    .fs55{font-size: 55px;}.fs20{font-size: 20px;}.fs18{font-size: 18px;}.fs15{font-size: 15px;}.fs14{font-size: 14px;}.fs13{font-size: 13px;}.fs12{font-size: 12px;}.fs11{font-size: 11px;}.fs10{font-size: 10px;}
+    .fs55{font-size: 55px!important;}.fs20{font-size: 20px!important;}.fs18{font-size: 18px!important;}.fs15{font-size: 15px!important;}.fs14{font-size: 14px!important;}.fs13{font-size: 13px!important;}.fs12{font-size: 12px!important;}.fs11{font-size: 11px!important;}.fs10{font-size: 10px!important;}
 
 /********** COLORS **********/
     /* Couleur de background black */
@@ -281,7 +292,9 @@
 
 /* md */
 @media only screen and (max-width: 768px){
-    
+    .nav-top-previous{
+        left: 50px;
+    }
 }
 
 /* lg */
@@ -301,10 +314,6 @@
 
     #offcanvasResponsive{
         height: 150px;
-    }
-
-    .nav-top-previous{
-        left: 70px;
     }
 }
 

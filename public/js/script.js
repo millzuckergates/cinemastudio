@@ -63,25 +63,24 @@ $(document).ready(function(){
     }
 
     // Changement de couleurs des barres de réputation
-    if($(".progress-bar").width() >= 100){
-        $(".progress-bar").css('background-color', '#00bf11!important');
-    }
+    
 
-    if($(".progress-bar").width() < 100 && $(".progress-bar").width() >= 75 ){
-        $(".progress-bar").css('background-color', '#8dd100');
-    }
 
-    if($(".progress-bar").width() < 75 && $(".progress-bar").width() >= 50 ){
-        $(".progress-bar").css('background-color', '#FECE00');
-    }
+    // if($(".progress-bar").width() < 100 && $(".progress-bar").width() >= 75 ){
+    //     $(".progress-bar").css('background-color', '#8dd100');
+    // }
 
-    if($(".progress-bar").width() < 50 && $(".progress-bar").width() >= 25 ){
-        $(".progress-bar").css('background-color', '#FE9900');
-    }
+    // if($(".progress-bar").width() < 75 && $(".progress-bar").width() >= 50 ){
+    //     $(".progress-bar").css('background-color', '#FECE00');
+    // }
 
-    if($(".progress-bar").width() < 25 ){
-        $(".progress-bar").css('background-color', '#FF3200');
-    }
+    // if($(".progress-bar").width() < 50 && $(".progress-bar").width() >= 25 ){
+    //     $(".progress-bar").css('background-color', '#FE9900');
+    // }
+
+    // if($(".progress-bar").width() < 25 ){
+    //     $(".progress-bar").css('background-color', '#FF3200');
+    // }
 
     // Affiche le menu au chargement de la page 
     $('#offcanvasScrolling').addClass('show');
