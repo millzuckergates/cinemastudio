@@ -5,7 +5,7 @@
 {% block body %}
 <div class="login container-fluid content-h">
     <div class="row h-100 justify-content-center align-items-center">
-        <div class="res-full col-xxl-3 col-xl-6 col-sm-8 col-12 bg-light px-2 py-5 shadow">
+        <div class="col-xxl-3 col-xl-6 col-sm-8 col-12 bg-light px-2 py-5 shadow-login rounded-5">
             <form class="w-75 mx-auto text-center d-flex flex-column justify-content-center" method="post">
                 {% if error %}
                     <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -18,12 +18,10 @@
                 {% endif %}
 
                 <h1 class="h3 font-weight-normal mt-5" style="margin-bottom: 20%;">CONNEXION</h1>
-                <input type="email" placeholder="E-MAIL" value="{{ last_username }}" name="email" id="inputEmail" class="form-control p-3 mb-4 mx-auto" autocomplete="email" required autofocus>
-                <input type="password" placeholder="MOT DE PASSE" name="password" id="inputPassword" class="form-control p-3 mb-4 mx-auto" autocomplete="current-password" required>
+                <input type="email" placeholder="E-mail" value="{{ last_username }}" name="email" id="inputEmail" class="form-control p-2 ps-3 mb-4 mx-auto rounded-pill fs13" autocomplete="email" required autofocus>
+                <input type="password" placeholder="Mot de passe" name="password" id="inputPassword" class="form-control p-2 ps-3 mb-4 mx-auto rounded-pill fs13" autocomplete="current-password" required>
 
-                <input type="hidden" name="_csrf_token"
-                    value="{{ csrf_token('authenticate') }}"
-                >
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
                 {#
                     Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
@@ -31,14 +29,14 @@
                 #}
 
                     <div class="checkbox mb-3 align-items-center text-start">                
-                        <input class="form-check-input me-2" type="checkbox" value="" aria-label="Checkbox for following text input" name="_remember_me"><span>Rester connecté</span>                       
+                        <input class="form-check-input me-2 fs13" type="checkbox" value="" aria-label="Checkbox for following text input" name="_remember_me"><span class="fs13">Rester connecté</span>                       
                     </div>
 
-                <button class="btn btn-outline-danger btn-lg m-5 px-5 py-4 mx-auto" type="submit">
+                <button class="btn btn-lg m-2 mb-4 px-5 py-3 mx-auto border border-dark rounded-pill fs14 fw-bold" type="submit">
                     JOUER
                 </button>
-                <a class="d-block fs14 text-secondary hover-csblack fw-bold" href="">CONNEXION IMPOSSIBLE</a>
-                <a class="fs14 text-secondary hover-csblack fw-bold" href="/inscription">CRÉER UN COMPTE</a></p>
+                <a class="d-block fs13 text-secondary hover-csblack fw-bold" href="">Connexion impossible</a>
+                <a class="fs13 text-secondary hover-csblack fw-bold" href="/inscription">Créer un compte</a></p>
             </form>
         </div>
     </div>

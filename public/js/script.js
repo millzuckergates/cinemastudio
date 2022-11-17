@@ -116,5 +116,6 @@ $(document).ready(function(){
 
         if (window.matchMedia("(max-width: 576px)").matches) {
             $('#liDropup').addClass('dropup');
+            $('.shadow-login').removeClass('rounded-5 bg-light');
         }
 })
