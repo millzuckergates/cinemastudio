@@ -22,4 +22,16 @@ class FilmController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/film/{slug}", name="app_film")
+     */
+    public function fiche(string $slug): Response
+    {
+        return $this->render('film/index.html.twig', [
+            'controller_name' => 'FilmController',
+        ]);
+    }
+
+
+
 }

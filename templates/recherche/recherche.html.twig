@@ -42,7 +42,7 @@
                             {% for film in films %}
                                 <tr class="fs13">
                                     <!-- <th scope="row"></th> -->
-                                    <td class="fw-bold">{{film.titre}}</td>
+                                    <td class="fw-bold"><a href="/film/{{film.slug}}">{{film.titre}}</a></td>
                                     <td>{{film.type}}</td>
                                 </tr>
                             {% endfor %}
