@@ -85,7 +85,7 @@
                 </div>
             {% endif %}
                 {# Menu online #} 
-                <nav class="navbar nav-top navbar-expand bg-light py-3 border-0">
+                <nav class="navbar nav-top sticky-top navbar-expand bg-light py-3 border-0">
                     <div class="container-fluid">                        
                         <div class="collapse navbar-collapse justify-content-end">
                             <ul class="navbar-nav">
@@ -166,7 +166,7 @@
                                             <a class="dropdown-item fs13" href="#">Profil</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item fs13" href="#">Paramètres</a>
+                                            <a class="dropdown-item fs13" href="{{ path('app_options_parametres', {id: app.user.id}) }}">Paramètres</a>
                                         </li>
                                     </ul>
                                 </li>

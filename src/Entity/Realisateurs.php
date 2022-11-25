@@ -49,7 +49,7 @@ class Realisateurs implements UserInterface, PasswordAuthenticatedUserInterface
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=60)
+     * @ORM\Column(type="string", length=60, nullable=true)
      */
     private $prenom;
 

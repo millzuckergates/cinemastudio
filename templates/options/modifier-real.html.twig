@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion du compte{% endblock %}
+
+{% block body %}  
+                             
+<div class="container-fluid content-h content-w bg-grad">
+    <div class="row h-100 p-5">
+        <div class="col-xxl-8 col-xl-10 my-auto ps-5 col-h">
+            <div class="row">
+                <div class="col pt-4">
+                    <h1 class="fs-4 fw-bold">MODIFIER LES INFORMATIONS</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col pt-5">
+                    <h1 class="mt-3 fs18 fw-bold">Informations personnelles</h1>
+                </div>
+            </div>
+            {{form_start(persoForm)}}
+            <div class="row">               
+                <div class="col-12 col-cs-h1 bg-csgrey rounded-3 px-5 py-2 h-100 d-flex justify-content-between my-1">
+                    <div class="fs13 fw-bold d-flex align-items-center">Mot de passe</div>
+                    <div>
+                        <form>
+                            <label for="current_password" class="fs13 pb-1">Mot de passe actuel</label>
+                            <input type="password" class="form-control rounded-1 border-0 bg-light fs13 d-flex align-items-center px-3 mb-3">
+                            <label for="current_password" class="fs13 pb-1">Nouveau mot de passe</label>
+                            <input type="password" class="form-control rounded-1 border-0 bg-light fs13 d-flex align-items-center px-3 mb-3">
+                            <label for="current_password" class="fs13 pb-1">Confirmer le nouveau mot de passe</label>
+                            <input type="password" class="form-control rounded-1 border-0 bg-light fs13 d-flex align-items-center px-3 mb-3">
+                    </div>
+                </div>
+                    <div class="text-end px-0 mt-1">
+                        <button type="submit" class="btn bg-csblack text-light rounded-pill px-3">Sauvegarder les changements</button>
+                    </div>   
+                </form>
+                <div class="col-12 col-cs-h1 bg-csgrey rounded-3 px-5 py-2 d-flex justify-content-between my-1">
+                    <div class="fs13 fw-bold d-flex align-items-center">Adresse e-mail</div>
+                    <div class="d-flex">
+                        <div class="rounded-1 bg-light fs13 d-flex align-items-center px-3">{{form_widget(persoForm.email)}}</div>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-cs-h1 bg-csgrey rounded-3 px-5 py-2 d-flex justify-content-between my-1">
+                    <div class="fs13 fw-bold d-flex align-items-center">Date de naissance</div>
+                    <div class="d-flex">
+                        <div class="rounded-1 fs13 d-flex align-items-center px-3 mx-1">{{form_widget(persoForm.date_de_naissance.day)}}</div>
+                        <div class="rounded-1 fs13 d-flex align-items-center px-3 mx-1">{{form_widget(persoForm.date_de_naissance.month)}}</div>
+                        <div class="rounded-1 fs13 d-flex align-items-center px-3 ms-1">{{form_widget(persoForm.date_de_naissance.year)}}</div>
+                    </div>
+                </div>
+                <div class="text-end px-0 mt-1">
+                    <button type="submit" class="btn bg-csblack text-light rounded-pill px-3">Sauvegarder les changements</button>
+                </div>
+            </div>
+            {{form_end(persoForm)}}
+
+            {{form_start(realForm)}}
+            <div class="row">
+                <div class="col pt-5">
+                    <h1 class="mt-3 fs18 fw-bold">Informations du réalisateur</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-cs-h1 bg-csgrey rounded-3 px-5 py-2 h-100 d-flex justify-content-between my-1">
+                    <div class="fs13 fw-bold d-flex align-items-center">Nom et prénom</div>
+                    <div>
+                        <form>
+                            <label for="current_password" class="fs13 pb-1">Nom</label>
+                            <div class="rounded-1 bg-light fs13 d-flex align-items-center px-3 py-2">{{form_widget(realForm.nom)}}</div>
+                            <label for="current_password" class="fs13 pb-1">Prénom</label>
+                            <div class="rounded-1 bg-light fs13 d-flex align-items-center px-3 py-2">{{form_widget(realForm.prenom)}}</div>
+                        </form>
+                    </div>
+                </div>  
+
+                <div class="col-12 col-cs-h1 bg-csgrey rounded-3 px-5 py-2 d-flex justify-content-between my-1">
+                    <div class="fs13 fw-bold d-flex align-items-center">Date de naissance</div>
+                    <div class="d-flex">
+                        <div class="rounded-1 fs13 d-flex align-items-center px-3 mx-1">{{form_widget(realForm.age.day)}}</div>
+                        <div class="rounded-1 fs13 d-flex align-items-center px-3 mx-1">{{form_widget(realForm.age.month)}}</div>
+                        <div class="rounded-1 fs13 d-flex align-items-center px-3 ms-1">{{form_widget(realForm.age.year)}}</div>
+                    </div>
+                </div>
+
+                <div class="text-end px-0 mt-1">
+                    <button type="submit" class="btn bg-csblack text-light rounded-pill px-3">Sauvegarder les changements</button>
+                </div>
+            {{form_end(realForm)}}
+        </div>
+    </div>
+    {% endblock %}

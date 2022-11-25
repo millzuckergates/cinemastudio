@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion du compte{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid content-h content-w bg-grad">
+    <div class="row h-100 p-5">
+        <div class="col-xxl-8 col-xl-10 my-auto ps-5 col-h">
+            <div class="row">
+                <div class="col pt-4">
+                    <h1 class="fs-4 fw-bold">PARAMÈTRES</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col pt-5">
+                    <h1 class="mt-3 fs18 fw-bold">Informations personnelles</h1>
+                </div>
+            </div>
+            {{ form_start(persoForm) }}
+            <div class="row">
+                <div class="col-12 col-cs-h1 bg-csgrey rounded-3 px-5 py-2 d-flex justify-content-between my-1">
+                    <div class="fs13 fw-bold d-flex align-items-center">Adresse e-mail</div>
+                    <div class="d-flex">
+                        <div class="rounded-1 bg-csdarkgrey fs13 d-flex align-items-center px-3" id="containerEmail">{{form_widget(persoForm.email)}}</div>
+                    </div>
+                </div>
+                <div class="col-12 col-cs-h1 bg-csgrey rounded-3 px-5 py-2 d-flex justify-content-between my-1">
+                    <div class="fs13 fw-bold d-flex align-items-center">Mot de passe</div>
+                    <div class="d-flex">
+                        <div class="d-flex align-items-end"><button type="button" class="btn bg-csblack text-light mx-3 rounded-pill btn-sm fs13 px-3">Modifier</button></div>
+                    </div>
+                </div>
+                <div class="col-12 col-cs-h1 bg-csgrey rounded-3 px-5 py-2 d-flex justify-content-between my-1">
+                    <div class="fs13 fw-bold d-flex align-items-center">Date de naissance</div>
+                    <div class="d-flex">
+                        <div class="rounded-1 bg-csdarkgrey fs13 d-flex align-items-center px-3 mx-1">{{form_widget(persoForm.date_de_naissance.day)}}</div>
+                        <div class="rounded-1 bg-csdarkgrey fs13 d-flex align-items-center px-3 mx-1">{{form_widget(persoForm.date_de_naissance.month)}}</div>
+                        <div class="rounded-1 bg-csdarkgrey fs13 d-flex align-items-center px-3 ms-1">{{form_widget(persoForm.date_de_naissance.year)}}</div>
+                    </div>
+                </div>
+                <div class="text-end px-0 mt-1">
+                    <button type="button" class="btn bg-csblack text-light rounded-pill px-3" id="modifButton">Modifier les informations</button>
+                    <button type="submit" class="btn bg-csblack text-light rounded-pill px-3" id="validerPersoButton" style="display: none">Valider</button>
+                </div>
+            </div>
+            {{ form_end(persoForm) }}
+            <div class="row">
+                <div class="col pt-5">
+                    <h1 class="mt-3 fs18 fw-bold">Informations réalisateur</h1>
+                </div>
+            </div>
+            {{ form_start(realForm) }}
+            <div class="row">
+                <div class="col-12 col-cs-h1 bg-csgrey rounded-3 px-5 py-2 d-flex justify-content-between my-1">
+                    <div class="fs13 fw-bold d-flex align-items-center">Nom complet</div>
+                    <div class="d-flex">
+                        <div class="rounded-1 bg-csdarkgrey fs13 d-flex align-items-center px-3">{{form_widget(realForm.prenom)}} {{form_widget(realForm.nom)}}</div>
+                    </div>
+                </div>
+                <div class="col-12 col-cs-h1 bg-csgrey rounded-3 px-5 py-2 d-flex justify-content-between my-1">
+                    <div class="fs13 fw-bold d-flex align-items-center">Date de naissance</div>
+                    <div class="d-flex">
+                        <div class="d-flex">
+                            <div class="d-flex align-items-center"><button type="button" class="btn bg-csblack text-light mx-3 rounded-pill btn-sm fs13 px-3">Modifier</button></div>
+                        </div>    
+                        <div class="rounded-1 bg-light fs13 d-flex align-items-center px-3 mx-1">{{form_widget(realForm.age.day)}}</div>
+                        <div class="rounded-1 bg-light fs13 d-flex align-items-center px-3 mx-1">{{form_widget(realForm.age.month)}}</div>
+                        <div class="rounded-1 bg-light fs13 d-flex align-items-center px-3 ms-1">{{form_widget(realForm.age.year)}}</div>
+                    </div>
+                </div>
+                <div class="col-12 bg-csgrey rounded-3 px-5 py-2 d-flex justify-content-between my-1">
+                    <div class="fs13 fw-bold d-flex align-items-center">Image de profil</div>
+                    <div class="d-flex">
+                        <div class="d-flex align-items-end"><button type="button" class="btn bg-csblack text-light mx-3 rounded-pill btn-sm fs13 px-3">Modifier</button></div>
+                        <div class="rounded-1 bg-csdarkgrey fs13 d-flex align-items-center">
+                            <img class="img-profil-parametres" src="{{ asset('/images/' ~ app.user.imgurl) }}" alt="Image de profil du réalisateur">
+                        </div>
+                    </div>
+                </div>
+                <div class="text-end px-0 mt-1">
+                    <button type="button" class="btn bg-csblack text-light rounded-pill px-3">Modifier les informations</button>
+                    <button type="submit" class="btn bg-csblack text-light rounded-pill px-3">Valider</button>
+                </div>   
+            </div>
+            {{ form_end(realForm) }}
+            <div class="row mt-4">
+                <div class="col-12 col-cs-h1 bg-csgrey rounded-3 px-5 py-2 d-flex justify-content-between my-1">
+                    <div class="fs13 fw-bold d-flex align-items-center">Supprimer ce compte</div>
+                    <div class="d-flex">
+                        <div class="d-flex align-items-center"><button type="button" class="btn bg-csred text-light rounded-pill btn-sm fs13 px-3">Supprimer ce compte</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

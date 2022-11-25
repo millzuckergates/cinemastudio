@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Realisateurs{% endblock %}
+
+{% block body %}
+    <h1>Realisateurs</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ realisateur.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ realisateur.email }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ realisateur.roles ? realisateur.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ realisateur.password }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ realisateur.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ realisateur.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Date_de_naissance</th>
+                <td>{{ realisateur.dateDeNaissance ? realisateur.dateDeNaissance|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ realisateur.age ? realisateur.age|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Img_url</th>
+                <td>{{ realisateur.imgUrl }}</td>
+            </tr>
+            <tr>
+                <th>Budget</th>
+                <td>{{ realisateur.budget }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ realisateur.type }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ realisateur.slug }}</td>
+            </tr>
+            <tr>
+                <th>IsVerified</th>
+                <td>{{ realisateur.isVerified ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_realisateurs_index') }}">back to list</a>
+
+    <a href="{{ path('app_realisateurs_edit', {'id': realisateur.id}) }}">edit</a>
+
+    {{ include('realisateurs/_delete_form.html.twig') }}
+{% endblock %}

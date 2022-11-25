@@ -101,6 +101,25 @@ $(document).ready(function(){
         $('.table-display').hide();
         $('.table-display').eq(index).show();
     })
+    // Clic sur le bouton de modification des infos (page paramètres du compte)
+    $("#infos_perso_form_email").prop('disabled',true);
+
+    $("#modifButton").click(function(){
+        if($("#modifButton").text('Modifier les informations')){
+            $("#infos_perso_form_email").prop('disabled',false);
+            $("#modifButton").text('Annuler les modifications');
+            $("#validerPersoButton").css('display', 'inline');
+            // à compléter
+            if($("#modifButton").text('Annuler les modifications')){
+                $("#modifButton").click(function(){
+                    $("#modifButton").text('Modifier les informations');
+                    $("#infos_perso_form_email").prop('disabled',true);
+                    $("#validerPersoButton").css('display', 'none');
+                })
+            };
+        }       
+    })
+
 
     // RESPONSIVE
         // N'affiche pas le menu au chargement de la page 

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Realisateurs index{% endblock %}
+
+{% block body %}
+    <h1>Realisateurs index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Date_de_naissance</th>
+                <th>Age</th>
+                <th>Img_url</th>
+                <th>Budget</th>
+                <th>Type</th>
+                <th>Slug</th>
+                <th>IsVerified</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for realisateur in realisateurs %}
+            <tr>
+                <td>{{ realisateur.id }}</td>
+                <td>{{ realisateur.email }}</td>
+                <td>{{ realisateur.roles ? realisateur.roles|json_encode : '' }}</td>
+                <td>{{ realisateur.password }}</td>
+                <td>{{ realisateur.nom }}</td>
+                <td>{{ realisateur.prenom }}</td>
+                <td>{{ realisateur.dateDeNaissance ? realisateur.dateDeNaissance|date('Y-m-d') : '' }}</td>
+                <td>{{ realisateur.age ? realisateur.age|date('Y-m-d') : '' }}</td>
+                <td>{{ realisateur.imgUrl }}</td>
+                <td>{{ realisateur.budget }}</td>
+                <td>{{ realisateur.type }}</td>
+                <td>{{ realisateur.slug }}</td>
+                <td>{{ realisateur.isVerified ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_realisateurs_show', {'id': realisateur.id}) }}">show</a>
+                    <a href="{{ path('app_realisateurs_edit', {'id': realisateur.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_realisateurs_new') }}">Create new</a>
+{% endblock %}

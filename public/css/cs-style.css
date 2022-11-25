@@ -5,6 +5,20 @@
     *{
         font-family: 'Raleway';
     }
+    /* Scrollbar */
+        ::-webkit-scrollbar{
+            width: 5px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: grey;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+        ::-webkit-scrollbar-button{
+            background-color: transparent;
+        }
     /* Hauteur de la navbar horizontale */
     .navbar-height{
         height: 60px;
@@ -13,10 +27,17 @@
     .nav-top{
         border-bottom: 1px solid #C3C5C6;
     }
+    /* Image de profil dans les parametres */
+    .img-profil-parametres{
+        width: 150px!important;
+    }
     /* Flèche page précédente */
     .nav-top-previous{
         position: absolute;
         left: 200px;
+    }
+    .col-h{
+        height: 90%;
     }
     /* Ligne vertical du menu horizontale */
     .vl{
@@ -28,9 +49,17 @@
         width: calc(100vw - 180px)!important;
         margin: 0 0 0 auto!important;      
     }
+    /* Dégradé du form de la page connexion */
     .shadow-login{
         -webkit-box-shadow: 0px 0px 15px 5px rgba(102,102,102,0.63); 
-box-shadow: 0px 0px 15px 5px rgba(102,102,102,0.63);
+        box-shadow: 0px 0px 15px 5px rgba(102,102,102,0.63);
+    }
+
+    .list-parametres{
+        list-style: none;
+    }
+    .list-parametres li{
+        padding: 5px 0;
     }
     /* Hauteur des pages (OFFLINE) */
     .content-h{
@@ -47,6 +76,10 @@ box-shadow: 0px 0px 15px 5px rgba(102,102,102,0.63);
     /* Reset des hovers sur les liens */
     a:hover{
         color: inherit;
+    }
+
+    .col-cs-h1{
+        height: 50px!important;
     }
     /* Marge interne sur toutes les pages */
     .layout-content{
@@ -94,6 +127,22 @@ box-shadow: 0px 0px 15px 5px rgba(102,102,102,0.63);
     /* Couleur de background black */
     .bg-csblack{
         background-color: #202020!important;
+    }
+    /* Couleur de background rouge */
+    .bg-csred{
+        background-color: #DC143C!important;
+    }
+    /* Couleur de background lightgrey */
+    .bg-cslightgrey{
+        background-color: #ffffff!important;
+    }
+    /* Couleur de background grey */
+    .bg-csgrey{
+        background-color: #ebebeb!important;
+    }
+    /* Couleur de background grey plus foncé */
+    .bg-csdarkgrey{
+        background-color: #d7d7d7;
     }
     /* Couleur de texte black */
     .text-csblack{
