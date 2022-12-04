@@ -23,6 +23,9 @@
     .navbar-height{
         height: 60px;
     }
+    #infos_perso_form_email:focus-visible{
+        outline-style: none!important;
+    }
     /* Bordure de la navbar horizontale */
     .nav-top{
         border-bottom: 1px solid #C3C5C6;

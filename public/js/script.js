@@ -103,21 +103,33 @@ $(document).ready(function(){
     })
     // Clic sur le bouton de modification des infos (page paramètres du compte)
     $("#infos_perso_form_email").prop('disabled',true);
+    $("#infos_perso_form_date_de_naissance_day, #infos_perso_form_date_de_naissance_month, #infos_perso_form_date_de_naissance_year").prop('disabled',true);
 
-    $("#modifButton").click(function(){
-        if($("#modifButton").text('Modifier les informations')){
-            $("#infos_perso_form_email").prop('disabled',false);
-            $("#modifButton").text('Annuler les modifications');
-            $("#validerPersoButton").css('display', 'inline');
-            // à compléter
-            if($("#modifButton").text('Annuler les modifications')){
-                $("#modifButton").click(function(){
-                    $("#modifButton").text('Modifier les informations');
-                    $("#infos_perso_form_email").prop('disabled',true);
-                    $("#validerPersoButton").css('display', 'none');
-                })
-            };
-        }       
+    $("#modifButton").click(function(event){
+      var x = $(this).text();    
+      if(x == "Modifier les informations"){
+        $(this).text("Annuler les modifications");
+        $("#infos_perso_form_email").prop('disabled',false);
+        $("#infos_perso_form_date_de_naissance_day, #infos_perso_form_date_de_naissance_month, #infos_perso_form_date_de_naissance_year").prop('disabled',false);
+        $("#validerPersoButton").css('display', 'inline');
+        $("#containerEmail").removeClass("bg-csdarkgrey");
+        $("#containerEmail, #infos_perso_form_date_de_naissance_day, #infos_perso_form_date_de_naissance_month, #infos_perso_form_date_de_naissance_year").addClass("bg-light fw-bold");
+        $("#infos_perso_form_email").addClass("fw-bold");
+      }else{
+        $(this).text("Modifier les informations");
+        $("#infos_perso_form_email").prop('disabled',true);
+        $("#infos_perso_form_date_de_naissance_day, #infos_perso_form_date_de_naissance_month, #infos_perso_form_date_de_naissance_year").prop('disabled',true);
+        $("#validerPersoButton").css('display', 'none');
+        $("#containerEmail, #infos_perso_form_date_de_naissance_day, #infos_perso_form_date_de_naissance_month, #infos_perso_form_date_de_naissance_year").removeClass("bg-light");
+        $("#containerEmail").addClass("bg-csdarkgrey");
+        $("#infos_perso_form_email").removeClass("fw-bold");
+        // Rechargement de la page
+        location.reload(true);
+      }
+    })
+
+    $("#annulerButton").click(function(){
+        location.reload(true);
     })
 
 
